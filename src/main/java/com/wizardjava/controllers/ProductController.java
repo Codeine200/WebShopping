@@ -56,7 +56,7 @@ public class ProductController {
         List<Category> categories = categoryService.getAllCategories();
         if(categories.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.is_empty", null, locale), Message.Type.DANGER));
-            return "redirect:/categories/";
+            return "redirect:/admin/categories/";
         }
 
         model.addAttribute("categories", categories);
@@ -70,13 +70,13 @@ public class ProductController {
         List<Category> categories = categoryService.getAllCategories();
         if(categories.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.is_empty", null, locale), Message.Type.DANGER));
-            return "redirect:/categories/";
+            return "redirect:/admin/categories/";
         }
 
         Product product = productService.getById(id);
         if(product == null) {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("product.not_exist", null, locale), Message.Type.DANGER));
-            return "redirect:/products/";
+            return "redirect:/admin/products/";
         }
 
         model.addAttribute("categories", categories);
@@ -90,7 +90,7 @@ public class ProductController {
         List<Category> categories = categoryService.getAllCategories();
         if(categories.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.is_empty", null, locale), Message.Type.DANGER));
-            return "redirect:/categories/";
+            return "redirect:/admin/categories/";
         }
 
         model.addAttribute("categories", categories);
@@ -101,7 +101,7 @@ public class ProductController {
         productService.updateProduct(product);
 
         redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("product.updated", new Object[] {product.getName()}, locale) ));
-        return "redirect:/products";
+        return "redirect:/admin/products";
     }
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
@@ -116,7 +116,7 @@ public class ProductController {
         productService.saveProduct(product);
 
         redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("product.created", new Object[]{product.getName()}, locale)));
-        return "redirect:/products/list";
+        return "redirect:/admin/products/";
     }
 
     @RequestMapping(value = { "/delete/{idProduct}" }, method = RequestMethod.GET)
@@ -129,6 +129,6 @@ public class ProductController {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("product.not_exist", new Object[]{idProduct}, locale), Message.Type.DANGER));
         }
 
-        return "redirect:/products/list";
+        return "redirect:/admin/products/";
     }
 }

@@ -50,7 +50,7 @@
             </table>
             <div class="col-md-12 center-block">
                 <div class="dataTables_paginate paging_bootstrap pagination">
-                    <t:pagination page="${page}" countPage="${countPage}" link="/products/list"></t:pagination>
+                    <t:pagination page="${page}" countPage="${countPage}" link="${contextPath}/admin/products/"></t:pagination>
                 </div>
             </div>
         </div>

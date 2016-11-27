@@ -28,7 +28,7 @@ public class CategoryController {
     @Autowired
     private MessageSource messageSource;
 
-    @RequestMapping(value = { "", "/", "/list" }, method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String listCategories(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer recordsPerPage, @ModelAttribute("message") Message message, ModelMap model) {
         long countProducts = categoryService.getCountCategories();
         if(recordsPerPage == null || recordsPerPage < 1 || recordsPerPage > countProducts) recordsPerPage = this.recordsPerPage;
@@ -56,7 +56,7 @@ public class CategoryController {
         Category category = categoryService.getById(id);
         if(category == null) {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.not_exist", null, locale), Message.Type.DANGER));
-            return "redirect:/categories/";
+            return "redirect:/admin/categories/";
         }
 
 
@@ -75,7 +75,7 @@ public class CategoryController {
         categoryService.updateCategory(category);
 
         redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.updated", new Object[]{category.getName()}, locale)));
-        return "redirect:/categories/list";
+        return "redirect:/admin/categories/";
     }
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class CategoryController {
         categoryService.saveCategory(category);
 
         redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.created", new Object[]{category.getName()}, locale)));
-        return "redirect:/categories/list";
+        return "redirect:/admin/categories/";
     }
 
     @RequestMapping(value = { "/delete/{idCategory}" }, method = RequestMethod.GET)
@@ -101,6 +101,6 @@ public class CategoryController {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("categories.not_exist", new Object[]{idCategory}, locale), Message.Type.DANGER));
         }
 
-        return "redirect:/categories/list";
+        return "redirect:/admin/categories/";
     }
 }

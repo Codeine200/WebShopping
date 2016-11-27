@@ -7,7 +7,7 @@
 
 <t:template title="Create your account">
 
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
+    <form:form method="POST" modelAttribute="userForm" class="form-shop form-shop-center">
       <h2 class="form-signin-heading">Create your account</h2>
       <spring:bind path="username">
         <div class="form-group ${status.error ? 'has-error' : ''}">

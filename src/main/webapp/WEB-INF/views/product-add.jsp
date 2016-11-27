@@ -9,44 +9,38 @@
 
 <h2><local:message code="product.registration" /></h2>
 
-<form:form method="POST" modelAttribute="product">
+<form:form method="POST" modelAttribute="product" class="form-shop">
   <form:input type="hidden" path="id" id="id"/>
-  <table>
-    <tr>
-      <td><label for="name"><local:message code="product.name" />: </label> </td>
-      <td><form:input path="name" id="name"/></td>
-      <td><form:errors path="name" cssClass="error"/></td>
-    </tr>
+  <div class="form-group">
+    <label for="name"><local:message code="product.name" /></label>
+    <form:input path="name" class="form-control" id="name" placeholder="Enter name" />
+    <form:errors path="name" cssClass="error"/>
+  </div>
 
-    <tr>
-      <td><label for="category.id"><local:message code="categories.category" />: </label> </td>
-      <td>
-        <form:select path="category.id">
-          <form:options items="${categories}" itemValue="id" itemLabel="name"></form:options>
-        </form:select>
-      </td>
-      <td><form:errors path="category.id" cssClass="error"/></td>
-    </tr>
+  <div class="form-group">
+    <label for="category.id"><local:message code="categories.category" /></label>
+    <form:select path="category.id" class="form-control">
+      <form:options items="${categories}" itemValue="id" itemLabel="name" class="form-control"></form:options>
+    </form:select>
+    <form:errors path="category.id" cssClass="error"/>
+  </div>
 
-    <tr>
-      <td><label for="price"><local:message code="product.price" />: </label> </td>
-      <td><form:input path="price" id="price"/></td>
-      <td><form:errors path="price" cssClass="error"/></td>
-    </tr>
+  <div class="form-group">
+    <label for="price"><local:message code="product.price" /></label>
+    <form:input path="price" class="form-control" id="price" placeholder="Enter price" />
+    <form:errors path="price" cssClass="error"/>
+  </div>
 
-    <tr>
-      <td colspan="3">
-        <c:choose>
-          <c:when test="${edit}">
-            <input type="submit" value="<local:message code="common.update" />"/>
-          </c:when>
-          <c:otherwise>
-            <input type="submit" value="<local:message code="common.add" />"/>
-          </c:otherwise>
-        </c:choose>
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    <c:choose>
+      <c:when test="${edit}">
+        <button type="submit" class="btn btn-lg btn-primary btn-block"><local:message code="common.update" /></button>
+      </c:when>
+      <c:otherwise>
+        <button type="submit" class="btn btn-lg btn-primary btn-block"><local:message code="common.add" /></button>
+      </c:otherwise>
+    </c:choose>
+  </div>
 </form:form>
 <br/>
 <br/>

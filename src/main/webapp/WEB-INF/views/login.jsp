@@ -5,7 +5,7 @@
 
 <t:template title="Log in with your account">
 
-    <form method="POST" action="${contextPath}/login" class="form-signin">
+    <form method="POST" action="${contextPath}/login" class="form-shop form-shop-center">
         <h2 class="form-heading">Log in</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
