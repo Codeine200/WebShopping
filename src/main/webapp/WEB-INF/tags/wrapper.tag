@@ -25,24 +25,28 @@
         <a class="navbar-brand" href="/admin/"><span>WebShopping</span></a>
 
 
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <!-- user dropdown starts -->
-            <div class="btn-group pull-right">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${pageContext.request.userPrincipal.name}</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
-                    <li class="divider"></li>
-                    <li><a onclick="document.forms['logoutForm'].submit()"> Logout</a></li>
-                </ul>
-            </div>
-            <!-- user dropdown ends -->
-        </c:if>
+
+        <!-- user dropdown starts and languages -->
+        <div class="btn-group pull-right">
+            <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${pageContext.request.userPrincipal.name}</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#"><local:message code="common.profile" /> ${pageContext.response.locale}
+                </a></li>
+                <li class="divider"></li>
+                <li><a onclick="document.forms['logoutForm'].submit()"> <local:message code="users.logout" /></a></li>
+            </ul>
+            </c:if>
+            &nbsp;<a href="?language=en"><img src="${contextPath}/includes/img/en.png" /></a> <a href="?language=ru"><img src="${contextPath}/includes/img/ru.png" /></a>
+        </div>
+        <!-- user dropdown ends -->
+
 
         <ul class="collapse navbar-collapse nav navbar-nav top-menu">
-            <li><a href="/"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
+            <li><a href="/"><i class="glyphicon glyphicon-globe"></i> <local:message code="common.visit" /></a></li>
         </ul>
 
     </div>
@@ -56,7 +60,7 @@
 
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
-                        <li class="nav-header">Main</li>
+                        <li class="nav-header"><local:message code="common.main" /></li>
                         <li><a class="ajax-link" href="${contextPath}/admin/products"><i class="glyphicon glyphicon-list-alt"></i><span> <local:message code="menu.products" /></span></a></li>
                         <li><a class="ajax-link" href="${contextPath}/admin/categories"><i class="glyphicon glyphicon-list"></i><span> <local:message code="menu.categories" /></span></a></li>
                     </ul>

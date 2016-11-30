@@ -32,7 +32,7 @@
         </div>
       </spring:bind>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit"><local:message code="users.submit" /></button>
     </form:form>
 
   </form>

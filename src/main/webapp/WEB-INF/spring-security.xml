@@ -8,12 +8,17 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
        <http auto-config="true">
-              <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+           <intercept-url pattern="/resources/**" access="permitAll" />
+           <intercept-url pattern="/login" access="permitAll" />
+           <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+           <intercept-url pattern="/**" access="permitAll" />
 
-              <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
-                          username-parameter="username" password-parameter="password"/>
+            <form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
+                      username-parameter="username" password-parameter="password"/>
 
-              <logout logout-success-url="/login?logout"/>
+            <logout logout-success-url="/login?logout"/>
+
+           <custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="myPreAuthFilter" />
        </http>
 
        <authentication-manager alias="authenticationManager">
@@ -29,4 +34,17 @@
                    class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
               <beans:constructor-arg name="strength" value="11"/>
        </beans:bean>
+
+
+    <beans:bean id="myPreAuthFilter" class="com.wizardjava.filter.InternationalizationFilter">
+        <beans:constructor-arg name="localeParam" value="language"></beans:constructor-arg>
+        <beans:constructor-arg name="localeResolver" ref="localeResolver"></beans:constructor-arg>
+    </beans:bean>
+
+    <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <beans:property name="defaultLocale" value="en" />
+        <!-- cookieMaxAge in seconds. if you set it to -1, the cookie will be deleted when browser is closed) -->
+        <beans:property name="cookieMaxAge" value="100000"/>
+    </beans:bean>
+
 </beans:beans>
