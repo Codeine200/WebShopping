@@ -1,5 +1,7 @@
 package com.wizardjava.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,9 +17,11 @@ public class User {
     private Long id;
 
     @Column
+    @NotEmpty
     private String username;
 
     @Column
+    @NotEmpty
     private String password;
 
     @Transient

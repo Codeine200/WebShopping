@@ -1,4 +1,4 @@
-package com.wizardjava.controllers;
+package com.wizardjava.controllers.admin;
 
 import com.wizardjava.entity.Category;
 import com.wizardjava.models.Message;

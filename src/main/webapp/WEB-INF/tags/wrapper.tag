@@ -24,8 +24,6 @@
 
         <a class="navbar-brand" href="/admin/"><span>WebShopping</span></a>
 
-
-
         <!-- user dropdown starts and languages -->
         <div class="btn-group pull-right">
             <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -34,7 +32,7 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="#"><local:message code="common.profile" /> ${pageContext.response.locale}
+                <li><a href="#"><local:message code="common.profile" />
                 </a></li>
                 <li class="divider"></li>
                 <li><a onclick="document.forms['logoutForm'].submit()"> <local:message code="users.logout" /></a></li>

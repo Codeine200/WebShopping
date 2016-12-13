@@ -9,27 +9,98 @@
 
 <h2><local:message code="product.registration" /></h2>
 
-<form:form method="POST" modelAttribute="product" class="form-shop">
-  <form:input type="hidden" path="id" id="id"/>
-  <div class="form-group">
-    <label for="name"><local:message code="product.name" /></label>
-    <form:input path="name" class="form-control" id="name" placeholder="Enter name" />
-    <form:errors path="name" cssClass="error"/>
-  </div>
+<form method="POST" class="form-shop" enctype="multipart/form-data" action="./new?${_csrf.parameterName}=${_csrf.token}">
+  <local:bind path="product.id">
+    <input type="hidden" name="${status.expression}" value="${status.value}" class="form-control" id="product.id">
+  </local:bind>
+
+  <local:bind path="product.name">
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+      <label for="product.name"><local:message code="product.name" /></label>
+        <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="product.name" placeholder="Enter name">
+        <c:if test="${status.error}">
+          <c:forEach items="${status.errorMessages}" var="error">
+            <c:out value="${error}"/>
+          </c:forEach>
+        </c:if>
+    </div>
+  </local:bind>
 
   <div class="form-group">
-    <label for="category.id"><local:message code="categories.category" /></label>
-    <form:select path="category.id" class="form-control">
-      <form:options items="${categories}" itemValue="id" itemLabel="name" class="form-control"></form:options>
-    </form:select>
-    <form:errors path="category.id" cssClass="error"/>
+    <label for="product.category.id"><local:message code="categories.category" /></label>
+    <local:bind path="product.category.id">
+      <select  name="${status.expression}" class="form-control" id="product.category.id">
+        <c:forEach items="${categories}" var="category">
+          <option value="${category.id}" class="form-control" ${category.id == status.value ? 'selected="selected"' : ''}>${category.name}</option>
+        </c:forEach>
+      </select>
+      <c:if test="${status.error}">
+        <c:forEach items="${status.errorMessages}" var="error">
+          <c:out value="${error}"/>
+        </c:forEach>
+      </c:if>
+    </local:bind>
   </div>
 
-  <div class="form-group">
-    <label for="price"><local:message code="product.price" /></label>
-    <form:input path="price" class="form-control" id="price" placeholder="Enter price" />
-    <form:errors path="price" cssClass="error"/>
-  </div>
+  <local:bind path="product.price">
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+      <label for="product.price"><local:message code="product.price" /></label>
+        <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="product.price" placeholder="Enter price">
+        <c:if test="${status.error}">
+          <c:forEach items="${status.errorMessages}" var="error">
+            <c:out value="${error}"/>
+          </c:forEach>
+        </c:if>
+    </div>
+  </local:bind>
+
+  <local:bind path="fileBucket.nameFile">
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+      <label for="fileBucket.nameFile"><local:message code="product.images.name" /></label>
+        <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="fileBucket.nameFile" placeholder="Enter name of picture">
+        <c:if test="${status.error}">
+          <c:forEach items="${status.errorMessages}" var="error">
+            <c:out value="${error}"/>
+          </c:forEach>
+        </c:if>
+    </div>
+  </local:bind>
+
+  <local:bind path="fileBucket.file">
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+      <label for="fileBucket.file"><local:message code="product.images.file" /></label>
+        <input type="file" name="${status.expression}" value="${status.value}" class="form-control" id="fileBucket.file">
+        <c:if test="${status.error}">
+          <c:forEach items="${status.errorMessages}" var="error">
+            <c:out value="${error}"/>
+          </c:forEach>
+        </c:if>
+    </div>
+  </local:bind>
+
+  <label for="fileBucket.descriptionFile"><local:message code="product.images.description" /></label>
+    <div class="form-group">
+      <local:bind path="fileBucket.descriptionFile">
+      <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="fileBucket.descriptionFile" placeholder="Enter description of picture">
+      <c:if test="${status.error}">
+        <c:forEach items="${status.errorMessages}" var="error">
+          <c:out value="${error}"/>
+        </c:forEach>
+      </c:if>
+    </div>
+  </local:bind>
+
+  <local:bind path="fileBucket.alt">
+    <div class="form-group">
+      <label for="fileBucket.alt"><local:message code="product.images.alt" /></label>
+      <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="fileBucket.alt" placeholder="Enter alt text">
+      <c:if test="${status.error}">
+        <c:forEach items="${status.errorMessages}" var="error">
+          <c:out value="${error}"/>
+        </c:forEach>
+      </c:if>
+    </div>
+  </local:bind>
 
   <div class="form-group">
     <c:choose>
@@ -41,7 +112,7 @@
       </c:otherwise>
     </c:choose>
   </div>
-</form:form>
+</form>
 <br/>
 <br/>
 

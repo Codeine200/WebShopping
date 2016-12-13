@@ -1,17 +1,21 @@
-package com.wizardjava.controllers;
+package com.wizardjava.controllers.admin;
 
 import com.wizardjava.entity.Category;
 import com.wizardjava.entity.Product;
+import com.wizardjava.models.FileBucket;
 import com.wizardjava.models.Message;
 import com.wizardjava.services.CategoryService;
 import com.wizardjava.services.ProductService;
 import com.wizardjava.utils.PageNavigation;
+import com.wizardjava.validators.ImageValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -29,6 +33,8 @@ public class ProductController {
 
     @Autowired
     private MessageSource messageSource;
+    @Autowired
+    private ImageValidator imageValidator;
 
     public final int recordsPerPage = 10;
 
@@ -59,6 +65,8 @@ public class ProductController {
             return "redirect:/admin/categories/";
         }
 
+        FileBucket fileModel = new FileBucket();
+        model.addAttribute("fileBucket", fileModel);
         model.addAttribute("categories", categories);
         model.addAttribute("product", new Product());
         model.addAttribute("edit", false);
@@ -78,7 +86,8 @@ public class ProductController {
             redirectAttributes.addFlashAttribute("message", new Message(messageSource.getMessage("product.not_exist", null, locale), Message.Type.DANGER));
             return "redirect:/admin/products/";
         }
-
+        FileBucket fileModel = new FileBucket();
+        model.addAttribute("fileBucket", fileModel);
         model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         model.addAttribute("edit", true);
@@ -105,10 +114,15 @@ public class ProductController {
     }
 
     @RequestMapping(value = { "/new" }, method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") @Valid Product product, BindingResult result, ModelMap model, Locale locale, RedirectAttributes redirectAttributes) {
+    public String saveProduct(@Valid Product product, BindingResult result,
+                              @Valid @ModelAttribute FileBucket fileBucket, BindingResult resultFile,
+                              ModelMap model, Locale locale, RedirectAttributes redirectAttributes) {
 
-        if (result.hasErrors()) {
+        imageValidator.validate(fileBucket, resultFile);
+
+        if (result.hasErrors() || resultFile.hasErrors()) {
             List<Category> categories = categoryService.getAllCategories();
+            model.addAttribute("fileBucket", fileBucket);
             model.addAttribute("categories", categories);
             return "product-add";
         }

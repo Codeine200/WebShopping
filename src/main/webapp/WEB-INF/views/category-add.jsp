@@ -11,11 +11,17 @@
 <form:form method="POST" modelAttribute="category" class="form-shop">
   <form:input type="hidden" path="id" id="id"/>
 
-  <div class="form-group">
-    <label for="name"><local:message code="categories.name" /></label>
-    <form:input path="name" class="form-control" id="name" placeholder="Enter name" />
-    <form:errors path="name" cssClass="error"/>
-  </div>
+  <local:bind path="name">
+    <div class="form-group ${status.error ? 'has-error' : ''}">
+      <label for="name"><local:message code="categories.name" /></label>
+      <input type="text" name="${status.expression}" value="${status.value}" class="form-control" id="name" placeholder="Enter name">
+      <c:if test="${status.error}">
+        <c:forEach items="${status.errorMessages}" var="error">
+          <c:out value="${error}"/>
+        </c:forEach>
+      </c:if>
+    </div>
+  </local:bind>
 
   <div class="form-group">
     <c:choose>

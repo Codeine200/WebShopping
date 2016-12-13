@@ -1,4 +1,4 @@
-package com.wizardjava.controllers;
+package com.wizardjava.controllers.admin;
 
 import com.wizardjava.entity.Product;
 import com.wizardjava.models.Message;
@@ -20,7 +20,7 @@ public class MainController {
     @Autowired
     ProductService productService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value={"/", ""}, method = RequestMethod.GET)
     public String listProducts(@RequestParam(required = false) Integer page,
                                @RequestParam(required = false) Integer recordsPerPage,
                                @RequestParam(required = false) Long idCategoryFilter,

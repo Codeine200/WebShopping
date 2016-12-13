@@ -32,8 +32,7 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
         String query = "select T from User T where username = ?";
         Object[] params  = {username};
         List<User> res = (List<User>)getHibernateTemplate().find(query, params);
-        User user = res.get(0);
-        return user;
+        return (res.size() != 0) ? res.get(0) : null;
     }
 
     @Override

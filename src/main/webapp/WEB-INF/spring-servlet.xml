@@ -36,4 +36,14 @@
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
 
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+    </bean>
+
+    <!-- include custom validators -->
+    <bean class="com.wizardjava.validators.ImageValidator" />
+    <bean class="com.wizardjava.validators.UserValidator" />
+
 </beans>

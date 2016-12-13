@@ -1,14 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="local" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <t:template title="Create your account">
 
     <form:form method="POST" modelAttribute="userForm" class="form-shop form-shop-center">
-      <h2 class="form-signin-heading">Create your account</h2>
+      <h2 class="form-signin-heading"><spring:message code="users.create" /></h2>
       <spring:bind path="username">
         <div class="form-group ${status.error ? 'has-error' : ''}">
           <form:input type="text" path="username" class="form-control" placeholder="Username"
@@ -32,7 +31,7 @@
         </div>
       </spring:bind>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit"><local:message code="users.submit" /></button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code="users.submit" /></button>
     </form:form>
 
   </form>
