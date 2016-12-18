@@ -1,6 +1,6 @@
 package com.wizardjava.controllers.admin;
 
-import com.wizardjava.entity.User;
+import com.wizardjava.entities.User;
 import com.wizardjava.services.SecurityService;
 import com.wizardjava.services.UserService;
 import com.wizardjava.validators.UserValidator;

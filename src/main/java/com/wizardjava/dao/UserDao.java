@@ -1,6 +1,6 @@
 package com.wizardjava.dao;
 
-import com.wizardjava.entity.User;
+import com.wizardjava.entities.User;
 
 import java.util.List;
 

@@ -1,12 +1,11 @@
 package com.wizardjava.validators;
 
 import com.wizardjava.models.FileBucket;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-/**
- * Created by Codeine on 12.12.2016.
- */
+@Component
 public class ImageValidator implements Validator {
 
     @Override
@@ -23,7 +22,7 @@ public class ImageValidator implements Validator {
                 errors.rejectValue("file", "common.file.empty");
             }
 
-            if(!file.getFile().getContentType().equals("image/jpeg") || !file.getFile().getContentType().equals("image/png")) {
+            if(!file.getFile().getContentType().equals("image/jpeg") && !file.getFile().getContentType().equals("image/png")) {
                 errors.rejectValue("file", "common.file.incorrect_type");
             }
         }

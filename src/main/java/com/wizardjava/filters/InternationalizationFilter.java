@@ -1,4 +1,4 @@
-package com.wizardjava.filter;
+package com.wizardjava.filters;
 
 import org.springframework.beans.propertyeditors.LocaleEditor;
 import org.springframework.context.i18n.LocaleContextHolder;

@@ -1,4 +1,4 @@
-package com.wizardjava.entity;
+package com.wizardjava.entities;
 
 import javax.persistence.*;
 
@@ -57,6 +57,23 @@ public class Image {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override

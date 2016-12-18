@@ -2,9 +2,7 @@ package com.wizardjava.dao.impl;
 
 import com.wizardjava.dao.AbstractDao;
 import com.wizardjava.dao.UserDao;
-import com.wizardjava.entity.User;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import com.wizardjava.entities.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;

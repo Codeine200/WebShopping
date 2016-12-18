@@ -1,7 +1,7 @@
 package com.wizardjava.services.impl;
 
 import com.wizardjava.dao.CategoryDao;
-import com.wizardjava.entity.Category;
+import com.wizardjava.entities.Category;
 import com.wizardjava.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

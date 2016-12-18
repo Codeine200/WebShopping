@@ -25,6 +25,7 @@
             <table class="table table-striped table-bordered responsive ">
                 <thead>
                     <td>id</td>
+                    <td></td>
                     <td><local:message code="product.name" /></td>
                     <td><local:message code="categories.category" /></td>
                     <td><local:message code="product.price" /></td>
@@ -34,6 +35,11 @@
                 <c:forEach items="${products}" var="product">
                 <tr>
                     <td class="center">${product.id}</td>
+                    <td>
+                        <c:if test="${not empty images[product.id].get(0)}">
+                            <img  src="data:image/jpeg;base64,${images[product.id].get(0)}" />
+                        </c:if>
+                    </td>
                     <td class="center"><a href="<c:url value='${contextPath}/admin/products/edit/${product.id}' />">${product.name}</a></td>
                     <td>${product.category.name}</td>
                     <td class="center">${product.price}</td>

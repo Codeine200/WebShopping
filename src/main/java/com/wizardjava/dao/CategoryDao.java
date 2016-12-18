@@ -1,6 +1,6 @@
 package com.wizardjava.dao;
 
-import com.wizardjava.entity.Category;
+import com.wizardjava.entities.Category;
 
 import java.util.List;
 

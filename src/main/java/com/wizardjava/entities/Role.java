@@ -1,4 +1,4 @@
-package com.wizardjava.entity;
+package com.wizardjava.entities;
 
 import javax.persistence.*;
 import java.util.Set;

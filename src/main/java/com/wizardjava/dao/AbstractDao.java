@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
@@ -46,6 +47,7 @@ public abstract class AbstractDao<PK extends Serializable, T> extends HibernateD
 
     public List<T> getEntityWithPagination(int offset, int recordsPerPage) {
         DetachedCriteria criteria = DetachedCriteria.forClass(persistentClass);
+        criteria.addOrder(Order.asc("id"));
         return (List<T>)getHibernateTemplate().findByCriteria(criteria, offset, recordsPerPage);
     }
 }

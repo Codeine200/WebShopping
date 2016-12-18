@@ -2,11 +2,9 @@ package com.wizardjava.dao.impl;
 
 import com.wizardjava.dao.AbstractDao;
 import com.wizardjava.dao.ImageDao;
-import com.wizardjava.entity.Image;
-import com.wizardjava.entity.Product;
+import com.wizardjava.entities.Image;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

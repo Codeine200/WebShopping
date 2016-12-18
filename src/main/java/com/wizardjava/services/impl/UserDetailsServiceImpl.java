@@ -1,15 +1,14 @@
 package com.wizardjava.services.impl;
 
 import com.wizardjava.dao.UserDao;
-import com.wizardjava.entity.Role;
-import com.wizardjava.entity.User;
+import com.wizardjava.entities.Role;
+import com.wizardjava.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;

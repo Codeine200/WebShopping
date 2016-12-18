@@ -1,4 +1,4 @@
-package com.wizardjava.entity;
+package com.wizardjava.entities;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

@@ -17,7 +17,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit"><local:message code="users.login" /></button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            <h4 class="text-center"><a href="${contextPath}/registration"><local:message code="users.create" /></a></h4>
         </div>
 
     </form>

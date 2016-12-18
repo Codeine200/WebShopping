@@ -1,7 +1,7 @@
 package com.wizardjava.services.impl;
 
 import com.wizardjava.dao.ProductDao;
-import com.wizardjava.entity.Product;
+import com.wizardjava.entities.Product;
 import com.wizardjava.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

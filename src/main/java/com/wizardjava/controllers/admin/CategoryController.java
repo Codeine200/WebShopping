@@ -1,6 +1,6 @@
 package com.wizardjava.controllers.admin;
 
-import com.wizardjava.entity.Category;
+import com.wizardjava.entities.Category;
 import com.wizardjava.models.Message;
 import com.wizardjava.services.CategoryService;
 import com.wizardjava.utils.PageNavigation;

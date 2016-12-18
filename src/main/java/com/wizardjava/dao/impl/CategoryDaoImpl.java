@@ -2,7 +2,7 @@ package com.wizardjava.dao.impl;
 
 import com.wizardjava.dao.AbstractDao;
 import com.wizardjava.dao.CategoryDao;
-import com.wizardjava.entity.Category;
+import com.wizardjava.entities.Category;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;

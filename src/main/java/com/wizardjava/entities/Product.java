@@ -1,6 +1,8 @@
-package com.wizardjava.entity;
+package com.wizardjava.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
@@ -10,10 +12,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -30,9 +31,16 @@ public class Product implements Serializable {
     private String name;
 
     @Column
+    private String description;
+
+    @Column
     @NotNull
     private BigDecimal price;
 
+    @Column
+    private Date created;
+
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id", scope=Category.class)
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
@@ -85,5 +93,21 @@ public class Product implements Serializable {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

@@ -1,5 +1,6 @@
-package com.wizardjava.entity;
+package com.wizardjava.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Category {
     @Column
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> productList = new HashSet<Product>();
 

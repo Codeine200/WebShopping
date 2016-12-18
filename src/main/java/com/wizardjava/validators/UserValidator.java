@@ -1,12 +1,11 @@
 package com.wizardjava.validators;
 
-import com.wizardjava.entity.User;
+import com.wizardjava.entities.User;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-/**
- * Created by Codeine on 12.12.2016.
- */
+@Component
 public class UserValidator  implements Validator {
 
     private int minLengthPsw = 6;

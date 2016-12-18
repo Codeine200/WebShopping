@@ -2,8 +2,8 @@ package com.wizardjava.services.impl;
 
 import com.wizardjava.dao.RoleDao;
 import com.wizardjava.dao.UserDao;
-import com.wizardjava.entity.Role;
-import com.wizardjava.entity.User;
+import com.wizardjava.entities.Role;
+import com.wizardjava.entities.User;
 import com.wizardjava.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

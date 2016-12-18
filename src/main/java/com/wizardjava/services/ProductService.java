@@ -1,6 +1,6 @@
 package com.wizardjava.services;
 
-import com.wizardjava.entity.Product;
+import com.wizardjava.entities.Product;
 
 import java.util.List;
 

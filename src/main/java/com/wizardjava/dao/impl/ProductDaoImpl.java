@@ -2,7 +2,7 @@ package com.wizardjava.dao.impl;
 
 import com.wizardjava.dao.AbstractDao;
 import com.wizardjava.dao.ProductDao;
-import com.wizardjava.entity.Product;
+import com.wizardjava.entities.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

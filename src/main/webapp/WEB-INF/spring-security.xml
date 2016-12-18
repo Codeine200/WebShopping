@@ -37,7 +37,7 @@
        </beans:bean>
 
 
-    <beans:bean id="myPreAuthFilter" class="com.wizardjava.filter.InternationalizationFilter">
+    <beans:bean id="myPreAuthFilter" class="com.wizardjava.filters.InternationalizationFilter">
         <beans:constructor-arg name="localeParam" value="language"></beans:constructor-arg>
         <beans:constructor-arg name="localeResolver" ref="localeResolver"></beans:constructor-arg>
     </beans:bean>

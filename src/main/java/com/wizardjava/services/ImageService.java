@@ -1,6 +1,6 @@
 package com.wizardjava.services;
 
-import com.wizardjava.entity.Image;
+import com.wizardjava.entities.Image;
 
 import java.util.List;
 

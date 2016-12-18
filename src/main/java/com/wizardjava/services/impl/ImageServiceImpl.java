@@ -1,7 +1,7 @@
 package com.wizardjava.services.impl;
 
 import com.wizardjava.dao.ImageDao;
-import com.wizardjava.entity.Image;
+import com.wizardjava.entities.Image;
 import com.wizardjava.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

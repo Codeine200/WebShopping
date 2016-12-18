@@ -2,7 +2,7 @@ package com.wizardjava.dao.impl;
 
 import com.wizardjava.dao.AbstractDao;
 import com.wizardjava.dao.RoleDao;
-import com.wizardjava.entity.Role;
+import com.wizardjava.entities.Role;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
